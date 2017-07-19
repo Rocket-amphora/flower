@@ -48,7 +48,8 @@ class GoogleAuth2LoginHandler(BaseHandler, tornado.auth.GoogleOAuth2Mixin):
         try:
             response = httpclient.HTTPClient().fetch(
                 'https://www.googleapis.com/plus/v1/people/me',
-                headers={'Authorization': 'Bearer %s' % access_token})
+                headers={'Authorization': 'Bearer %s' % access_token},
+                allow_nonstandard_methods=True)
         except Exception as e:
             raise tornado.web.HTTPError(403, 'Google auth failed: %s' % e)
 
