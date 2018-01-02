@@ -64,6 +64,7 @@ class FlowerCommand(Command):
         for env_var_name in env_options:
             name = env_var_name.replace(self.ENV_VAR_PREFIX, '', 1).lower()
             value = os.environ[env_var_name]
+            logger.debug('ENV var {} -> {}'.format(name, value))
             try:
                 option = options._options[name]
             except:
